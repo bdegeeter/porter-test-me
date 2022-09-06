@@ -11,7 +11,7 @@ jsonOut=$(jq -n \
   --arg exitStatus ${exitCode} \
   --arg insecureValue ${insecureValue} \
   '{"config": { "action":$action, "parameters":{"delay":$delay|tonumber, "exitStatus":$exitStatus|tonumber }}, "credentials": {"insecureValue":$insecureValue}}')
-
+echo ${jsonOut} > state.json
 sleep ${delay}
 echo ${jsonOut} | jq .
 exit ${exitCode}
